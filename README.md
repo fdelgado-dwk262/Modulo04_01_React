@@ -6,9 +6,13 @@ React
 
 ## Resumen
 
+### Basico antiguo .-
+
+Partiendo de un input de entrada filtrar de una lista dada
+
 ### Basico .-
 
-Partiendo del listado de itegrantes de un repositorio giotHub de una empresa.
+Teniendo un input de entrada, obtener un listado github de miembros de una organización.
 
 ### Intermedio 01 .-
 
