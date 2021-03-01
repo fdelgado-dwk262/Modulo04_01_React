@@ -1,6 +1,7 @@
 import React from "react";
 
 // material ui
+import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -15,32 +16,36 @@ export const ListPage: React.FC = () => {
 
     const montaJson = () => {
         fetch(`https://api.github.com/orgs/${filter}/members`)
-        .then((response) => response.json())
-        .then((json) => setSafeUserCollection(json));
+            .then((response) => response.json())
+            .then((json) => setSafeUserCollection(json));
     };
 
-    const setSafeUserCollection = (userCollection) => 
-        setUsercollection(userCollection); 
+    const setSafeUserCollection = (userCollection) => {
+        setUsercollection(userCollection);
+        console.log(userCollection.length); //<-- sabemos la cantidad de registros que hay
 
+    }
+    
     // evento del submit
     const handleListado = (e) => {
         e.preventDefault()
+
         if (filter.length > 0) {
             montaJson()
         } else {
-            alert ("inserte empresa a buscar")
+            alert("inserte empresa a buscar")
         }
     };
 
     // monta la primera vez la lista en base al parametro de entrada por defecto
-    React.useEffect(() => {    
+    React.useEffect(() => {
         montaJson()
     }, []);
 
     return (
         <div>
             <form onSubmit={handleListado}>
-                <input value={filter} onChange={(e) => setFilter(e.target.value)} />
+                <TextField id="outlined-basic" label="Organización" variant="outlined" value={filter} onChange={(e) => setFilter(e.target.value)} />
                 <div>
                     <Button type="button" variant="contained" color="primary" onClick={(e) => setFilter('')}>
                         reset
@@ -52,31 +57,31 @@ export const ListPage: React.FC = () => {
             </form>
             <List>
                 {
-                (userCollection && Array.isArray(userCollection) && userCollection.length > 0 ) ? 
-                userCollection.map((member) => (
-                <ListItem alignItems="flex-start" key={member.id}>
-                    <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src={member.avatar_url} />
-                    </ListItemAvatar>
-                    <ListItemText
-                    primary={member.login}
-                    secondary={
-                        <React.Fragment>
-                        <Typography
-                            component="span"
-                            variant="body2"
-                            color="textPrimary"
-                        >
-                            {member.id}
-                        </Typography>
-                        {" — "} {member.node_id}
-                        </React.Fragment>
-                    }
-                    />
-                </ListItem>
-                ))
-                :
-                <span> No hay resultados </span>
+                    (userCollection && Array.isArray(userCollection) && userCollection.length > 0) ?
+                        userCollection.map((member) => (
+                            <ListItem alignItems="flex-start" key={member.id}>
+                                <ListItemAvatar>
+                                    <Avatar alt="Remy Sharp" src={member.avatar_url} />
+                                </ListItemAvatar>
+                                <ListItemText
+                                    primary={member.login}
+                                    secondary={
+                                        <React.Fragment>
+                                            <Typography
+                                                component="span"
+                                                variant="body2"
+                                                color="textPrimary"
+                                            >
+                                                {member.id}
+                                            </Typography>
+                                            {" — "} {member.node_id}
+                                        </React.Fragment>
+                                    }
+                                />
+                            </ListItem>
+                        ))
+                        :
+                        <span> No hay resultados </span>
                 }
             </List>
         </div>

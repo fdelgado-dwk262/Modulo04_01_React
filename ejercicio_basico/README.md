@@ -21,9 +21,9 @@ basico-app/04-detail
 #### Pistas:
 
 La url con la que hacemos el fetch para obtener los miembros tiene el nombre de la organización a lista.
-
 Para el filtro puedes usar useState.
 
-Ideas opcionales:
+### Ideas opcionales:
+
 * Añade paginación.
 * Añade material ui.
