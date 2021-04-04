@@ -31,9 +31,9 @@ export const DashboardComponent: React.StatelessComponent<Props> = props => {
       {/* recuperamos el color del contexto */}
       {/* <h3 style={{ color: myContext.color }}>Secciones disponibles </h3> */}
       {/* llamanos a una funcion del contexto */}
-      <a style={{ color: myContext.color }} onClick={myContext.pruebaconsole}>si mempulsas llamo al contexto</a>
+      {/* <a style={{ color: myContext.color }} onClick={myContext.pruebaconsole}>si mempulsas llamo al contexto</a>
 
-      <a onClick={() => myContext.prueba('red')}>paso rojo al contexto ???</a>
+      <a onClick={() => myContext.prueba('red')}>paso rojo al contexto ???</a> */}
 
       <div className={cx(innerClasses.items, classes.items)}>
         {items.map(

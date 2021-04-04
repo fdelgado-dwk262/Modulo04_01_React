@@ -1,5 +1,5 @@
 {
-  "name": "origin-front-admin",
+  "name": "carrito-compra-context",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -22,7 +22,7 @@
   "repository": {
     "type": "git"
   },
-  "author": "Lemoncode",
+  "author": "FernandoDelgado",
   "license": "MIT",
   "homepage": "",
   "lint-staged": {
